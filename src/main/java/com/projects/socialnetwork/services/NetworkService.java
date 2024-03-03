@@ -236,24 +236,6 @@ public class NetworkService implements Service, Observable {
                 .orElse(null);
     }
 
-//    @Override
-//    public Iterable<UserFriendshipDTO> friendshipsOfUserOnMonth(String username, Month month) {
-//        User user = getUserByUsername(username).get();
-//
-//        Set<UserFriendshipDTO> userFriendshipDTOS = new HashSet<>();
-//        for (Friendship f : friendshipRepository.getAll()) {
-//            if (f.getFriendsSince().getMonth().equals(month)) {
-//                if (f.getUser1().equals(user)) {
-//                    userFriendshipDTOS.add(new UserFriendshipDTO(f.getUser2().getFirstName(),f.getUser2().getLastName(), f.getFriendsSince()));
-//                } else if (f.getUser2().equals(user)) {
-//                    userFriendshipDTOS.add(new UserFriendshipDTO(f.getUser1().getFirstName(),f.getUser1().getLastName(), f.getFriendsSince()));
-//                }
-//            }
-//        }
-//        return userFriendshipDTOS;
-//
-//    }
-
     @Override
     public Iterable<UserFriendshipDTO> friendshipsOfUserOnMonth(String username, Month month) {
         User user = userRepository.getUserByUsername(username).orElseThrow(() -> new IllegalArgumentException("User not found"));
@@ -377,8 +359,6 @@ public class NetworkService implements Service, Observable {
         for (Observer o : observers)
             o.update();
     }
-
-
 
     public Page<User> getAllUsersPaged(Pageable pageable) {
         return userDBPagingRepository.findAll(pageable);

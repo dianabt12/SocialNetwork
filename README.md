@@ -1,2 +1,2 @@
-# socialNetwork
+# SocialNetwork
 Social Network App
